@@ -217,7 +217,7 @@ class ImportSource extends ImportSourceHook
 		switch ($mode) {
 			// VM's
 			case self::VMMode:
-				$services = $netbox->allservices(0, "");
+				$services = $netbox->allservices("", 0);
 				$devices = $netbox->virtualMachines($filter, $limit);
 				return $this->devices_with_services($services, $devices);
 			case self::ClusterMode:
@@ -229,7 +229,7 @@ class ImportSource extends ImportSourceHook
 							
 			// Device
 			case self::DeviceMode:
-				$services = $netbox->allservices(0, "");
+				$services = $netbox->allservices("", 0);
 				$devices = $netbox->devices($filter, $limit);
 				return $this->devices_with_services($services, $devices, $filter);
 			case self::DeviceRoleMode:
